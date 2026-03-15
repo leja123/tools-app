@@ -19,12 +19,12 @@ session_start();
         </div>
         <div id="register">
             <h4>Register</h4><br>
-            <form method="POST" action="">
-                First name<input type="text"></input><br>
-                Last name<input type="text"></input><br>
-                Username<input type="text"></input><br>
-                Password<input type="text"></input><br>
-                Repeat password<input type="text"></input><br>
+            <form method="POST" action="register.php">
+                First name<input type="text" name="first_name"></input><br>
+                Last name<input type="text" name="last_name"></input><br>
+                Username<input type="text" name="username"></input><br>
+                Password<input type="text" name="password1"></input><br>
+                Repeat password<input type="text" name="password2"></input><br>
                 <button type="submit">Register</button>
             </form>
         </div>
