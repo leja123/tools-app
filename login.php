@@ -27,6 +27,7 @@ if ($hashed_password) {
     // check password
     if (password_verify($password, $hashed_password)) {
         echo "Login successful!";
+        header("Location: main.php");
         $_SESSION['username'] = $username;
     } else {
         echo "Incorrect password";
