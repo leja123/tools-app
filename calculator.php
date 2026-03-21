@@ -1,5 +1,114 @@
 <?php
+if (isset($_POST['back'])) {
+    header("Location: main.php"); 
+    exit();
+}
 ?>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #8cbcd8;
+        font-family: Arial, sans-serif;
+    }
+
+    #calculator {
+        background: #2c2c2c;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    #answer {
+        width: 100%;
+        height: 60px;
+        font-size: 24px;
+        text-align: right;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background: #000;
+        color: #0f0;
+    }
+
+    input[type="button"] {
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        margin: 5px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    input[type="button"]:hover {
+        opacity: 0.8;
+    }
+
+
+    input[value="0"],
+    input[value="1"],
+    input[value="2"],
+    input[value="3"],
+    input[value="4"],
+    input[value="5"],
+    input[value="6"],
+    input[value="7"],
+    input[value="8"],
+    input[value="9"],
+    input[value="."] {
+        background: #3a3a3a;
+        color: white;
+    }
+
+    
+    input[value="/"],
+    input[value="*"],
+    input[value="-"],
+    input[value="+"] {
+        background: orange;
+        color: white;
+    }
+
+    
+    input[value="AC"],
+    input[value="C"],
+    input[value="%"],
+    input[value="()"] {
+        background: #a5a5a5;
+    }
+
+    
+    input[value="="] {
+        width: 100%;
+        background: #4caf50;
+        color: white;
+        font-size: 22px;
+    }
+
+    #backBtn {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #444;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    }
+
+    #backBtn:hover {
+        background: #666;
+    }
+</style>
+<form method="POST" style="position: absolute; top: 20px; left: 20px;">
+    <button type="submit" name="back" id="backBtn">← Back</button>
+</form>
 <table id=calculator>
     <tr>
         <td colspan="4">
