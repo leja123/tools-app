@@ -32,7 +32,7 @@ if (isset($_POST['back'])) {
         border-radius: 10px;
         margin-bottom: 10px;
         background: #000;
-        color: #0f0;
+        color: #3041db;
     }
 
     input[type="button"] {
@@ -71,7 +71,7 @@ if (isset($_POST['back'])) {
     input[value="*"],
     input[value="-"],
     input[value="+"] {
-        background: orange;
+        background: #6f99f3;
         color: white;
     }
 
@@ -86,7 +86,7 @@ if (isset($_POST['back'])) {
     
     input[value="="] {
         width: 100%;
-        background: #4caf50;
+        background: #3041db;
         color: white;
         font-size: 22px;
     }
@@ -276,15 +276,14 @@ function toggleSign() {
         let toggled;
 
         if (number.startsWith("-")) {
-            toggled = number.substring(1); // make positive
+            toggled = number.substring(1); 
         } else {
-            toggled = "-" + number; // make negative
+            toggled = "-" + number; 
         }
 
         display.value =
             value.substring(0, start) + toggled;
     } else {
-        // fallback: just add minus
         display.value += "-";
     }
 }
