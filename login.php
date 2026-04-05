@@ -18,9 +18,20 @@ $password = $_POST['password'];
 $stmt = $conn->prepare("SELECT password FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
-
 $stmt->bind_result($hashed_password);
 $stmt->fetch();
+
+$stmt->free_result();
+$stmt->close();       
+
+// get user_id
+$stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$stmt->bind_result($user_id);
+$stmt->fetch();
+
+$stmt->close();
 
 if ($hashed_password) {
 
@@ -29,6 +40,7 @@ if ($hashed_password) {
         echo "Login successful!";
         header("Location: main.php");
         $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $user_id; 
     } else {
         echo "Incorrect password";
     }
