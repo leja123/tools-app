@@ -28,10 +28,11 @@ echo "first name" . $first_name . "last name: " . $last_name . "usernmae: " . $u
 
 $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, password) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $first_name, $last_name, $username, $hashed_password);
-$stmt->execute();
 $stmt->store_result();
 if ($stmt->execute()) {
     echo "User successfully registered!";
+    header("Location: s_registered.php?username=" . urlencode($username));
+    exit(); 
 } else {
     echo "Error: " . $stmt->error;
 }
