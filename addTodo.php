@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 $conn = new mysqli("localhost", "root", "", "tools_app");
 
 $user_id = $_SESSION['user_id'];
