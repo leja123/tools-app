@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -21,6 +24,7 @@ $stmt->bind_param("iss", $user_id, $title, $note);
 
 if ($stmt->execute()) {
     echo "Note successfully added!";
+    header("Location: notes.php");
 } else {
     echo "Error: " . $stmt->error;
 }
