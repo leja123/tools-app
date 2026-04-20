@@ -105,7 +105,29 @@ if (isset($_POST['back'])) {
     #backBtn:hover {
         background: #666;
     }
+    .logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    background: #2c2c2c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #3041db;
+}
 </style>
+<form action="logout.php" method="post">
+    <button class="logout-btn">Log out</button>
+</form>
 <form method="POST" style="position: absolute; top: 20px; left: 20px;">
     <button type="submit" name="back" id="backBtn">← Back</button>
 </form>

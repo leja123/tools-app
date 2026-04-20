@@ -168,8 +168,29 @@ body {
 .delete-btn:hover {
     color: red;
 }
-</style>
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
+    background: #2c2c2c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #3041db;
+}
+</style>
+<form action="logout.php" method="post">
+    <button class="logout-btn">Log out</button>
+</form>
 <!-- TOP BAR -->
 <div class="top-bar">
     <form method="POST">
