@@ -134,8 +134,7 @@ let startTime = 0;
 let elapsed = 0;
 let timer = null;
 
-let running = false;
-let paused = false;
+let state = "idle"; 
 
 function updateDisplay() {
     let minutes = Math.floor(elapsed / 60000);
@@ -152,8 +151,7 @@ function startStop() {
     const btn = document.getElementById("startStopBtn");
     const pauseBtn = document.getElementById("pauseBtn");
 
-    if (!running) {
-        // START or RESUME from reset
+    if (state === "idle") {
         startTime = Date.now() - elapsed;
 
         timer = setInterval(() => {
@@ -161,44 +159,40 @@ function startStop() {
             updateDisplay();
         }, 10);
 
-        running = true;
-        paused = false;
-
+        state = "running";
         btn.innerText = "Stop";
         pauseBtn.disabled = false;
         pauseBtn.innerText = "Pause";
 
-    } else {
-        // STOP (reset everything)
+    } else if (state === "running" || state === "paused") {
         clearInterval(timer);
         timer = null;
 
+        state = "stopped";
+        btn.innerText = "Restart";
+        pauseBtn.disabled = true;
+        pauseBtn.innerText = "Pause";
+
+    } else if (state === "stopped") {
         elapsed = 0;
         updateDisplay();
 
-        running = false;
-        paused = false;
-
+        state = "idle";
         btn.innerText = "Start";
-        pauseBtn.disabled = true;
-        pauseBtn.innerText = "Pause";
     }
 }
 
 function pauseResume() {
     const pauseBtn = document.getElementById("pauseBtn");
 
-    if (!paused) {
-        // PAUSE
+    if (state === "running") {
         clearInterval(timer);
         timer = null;
 
-        running = false;
-        paused = true;
-
+        state = "paused";
         pauseBtn.innerText = "Resume";
-    } else {
-        // RESUME
+
+    } else if (state === "paused") {
         startTime = Date.now() - elapsed;
 
         timer = setInterval(() => {
@@ -206,9 +200,7 @@ function pauseResume() {
             updateDisplay();
         }, 10);
 
-        running = true;
-        paused = false;
-
+        state = "running";
         pauseBtn.innerText = "Pause";
     }
 }
