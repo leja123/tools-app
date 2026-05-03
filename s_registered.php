@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!isset($_GET['username'])) {
-    header("Location: index.php");
-    exit();
-}
+
 
 $username = htmlspecialchars($_GET['username']);
 ?>
